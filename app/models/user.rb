@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_secure_password
     has_many :plants 
     has_many :types, through: :plants 
+    has_many :plants_comments, through: :plants, source: :comments 
     validates :email, uniqueness: true 
     validates :username, :email, presence: true 
 
