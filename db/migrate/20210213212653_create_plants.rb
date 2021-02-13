@@ -4,8 +4,8 @@ class CreatePlants < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :img
       t.string :description
-      t.integer :type_id
-      t.integer :user_id
+      t.belongs_to :user, null: false, foreign_key: true 
+      t.belongs_to :type, null: false, foreign_key: true 
 
       t.timestamps
     end
