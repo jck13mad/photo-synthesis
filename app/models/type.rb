@@ -3,5 +3,7 @@ class Type < ApplicationRecord
     has_many :plants 
     has_many :users, through: :plants
 
-    
+    def self.search(q)
+        Type.where("name LIKE ?", "%#{q}%").alpha
+    end 
 end
