@@ -1,2 +1,23 @@
 class Plant < ApplicationRecord
+    validates :name, :description, presence: true 
+    validates :description, length: {maximum: 500, 
+        too-long: "Description can only be 500 characters."} 
+
+    belongs_to :user
+    has_many :comments
+    has_many :users_commented, through: :comments, source: :user
+    belongs_to :type
+
+    def type_attributes=(attr) 
+        if !attr[:name].blank?
+            self.type = Type.find_or_create_by(name: attr[:name])
+        end
+    end 
+
+    default_scope :order => 'plants.name ASC'
+
+    def plant_and_type
+        "#{self.name} - #{self.type.try(:name)}"
+    end 
+
 end
