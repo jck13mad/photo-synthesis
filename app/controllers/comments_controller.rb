@@ -44,9 +44,10 @@ class CommentsController < ApplicationController
     def update
         @comment = current_user.comments.find(params[:id])
 
-        if @comment.update(comment_params)
+        if @comment.update(comment_params) && @comment.user == current_user
             redirect_to comment_path(@comment)
         else
+            flash[:message] = "You can only edit your own comment"
             @error = @comment.errors.full_messages
             render :edit 
     end 
@@ -55,10 +56,11 @@ class CommentsController < ApplicationController
         @comment = current_user.comments.find(params[:id])
         @plant = Plant.find(params[:comment][:plant_id]) 
 
-        if @comment.destroy 
+        if @comment.destroy && @comment.user == current_user
             flash[:success] = "Your comment was removed."
             redirect_to plants_path(@plant)
         else
+            flash[:message] = "You can only delete a comment you created."
             @error = @comment.errors.full_messages
             render :edit 
         end 
