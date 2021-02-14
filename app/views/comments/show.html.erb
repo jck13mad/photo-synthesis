@@ -1,0 +1,13 @@
+<h2>Showing Comment on <%= @comment.plant.name %></h2>
+
+<h4>"<%= @comment.content %>" made by <%= @comment.user.username %></h4>
+<br />
+<br />
+
+<% if @comment.user == current_user %>
+  <%= link_to "Edit Comment", edit_comment_path(@comment) %> | 
+  <%= link_to "Delete Comment", delete_comment_path(@comment) %>
+<% end %>
+<br />
+<br />
+<%= link_to "Back to Plant", plant_path(@comment.plant) %>
