@@ -1,7 +1,7 @@
 class Plant < ApplicationRecord
     validates :name, :description, presence: true 
     validates :description, length: {maximum: 500, 
-        too-long: "Description can only be 500 characters."} 
+        too_long: "Description can only be 500 characters."} 
 
     belongs_to :user
     has_many :comments
