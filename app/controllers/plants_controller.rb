@@ -4,9 +4,9 @@ class PlantsController < ApplicationController
 
     def index
         if params[:type_id] && @type = Type.find_by_id(params[:type_id])
-            @plant = @type.plants.order 
+            @plant = @type.plants.order_by_name
         else
-            @plants = Plant.order
+            @plants = Plant.order_by_name
         end
     end
 
