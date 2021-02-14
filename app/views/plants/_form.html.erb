@@ -1,0 +1,11 @@
+<%= form_for([@type, @plant]) do |f| %>
+    <%= display_type_fields(f) %>
+    <%= f.label :name, "Name of Plant: " %>
+    <%= f.text_field :name %><br />
+    <%= f.label :description, "Plant Description: " %>
+    <%= f.text_area :description %><br />
+    <%= f.label :img, "URL of Plant Image: " %>
+    <%= f.text_field :img %><br />
+    <br />
+    <%= f.submit %>
+<% end %>
