@@ -1,0 +1,27 @@
+<h2>Edit <%= @plant.name %></h2>
+
+<% if @plant.errors.any? %>
+    <div id="error_explanation">
+        <h3><%= pluralize(@plant.errors.count, "error") reasons why this plant can not be saved: </h3>
+
+        <ul>
+            <% @plant.errors.full_messages.each do |err| %>
+                <li><%= err %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_with(model: @plant, class: 'edit_plant', local: true) do |f| %>
+    <%= f.label :name, "Name of Plant: " %>
+    <%= f.text_field :name, placeholder: @plant.name %><br />
+    <%= f.label :type, "Plant Type: " %>
+    <%= f.text_field :type, placeholder: @plant.type.name %><br />
+    <%= f.label :description, "Plant Description: " %>
+    <%= f.text_area :description, placeholder: @plant.description %><br />
+    <%= f.label :img, "URL of Plant Image: " %>
+    <%= f.text_field :img, placeholder: @plant.img %><br />
+    <br />
+    <%= f.submit %>
+
+<% end %>
