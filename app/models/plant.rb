@@ -14,7 +14,7 @@ class Plant < ApplicationRecord
         end
     end 
 
-    default_scope :order => 'plants.name ASC'
+    scope :order_by_name, -> {order(name: :asc)}
 
     def plant_and_type
         "#{self.name} - #{self.type.try(:name)}"
