@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PhotoSynthesis</title>
+    <title>Photo-Synthesis</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <%= link_to 'All Plants', plants_path %> | 
+    <%= link_to 'All Types', types_path %> | 
+    <%= link_to 'Log Out', logout_path, method: 'delete' %>
+    <br />
+    <br />
+
+    <% if flash[:alert] %>
+      <div class="field_with_errors"><%= flash[:alert] %></div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
