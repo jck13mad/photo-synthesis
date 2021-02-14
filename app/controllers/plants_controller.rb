@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-    before_action :find_plant, :redirect_if_not_logged_in, only: [:edit, :update, :destroy]
+    before_action :find_plant, :redirect_if_not_owner, only: [:edit, :update, :destroy]
     layout 'plant'
 
     def index
