@@ -2,7 +2,7 @@
 <br />
 <%= render partial: '/shared/errors', locals: {obj: @user }%>
 <br />
-<%= button_to "Log in with Google", '/auth/google_oauth2' %>
+<%= button_to "Log in with Google", ':provider/callback' %>
 <br />
 <%= form_with(model: @user, url:'/signup', local: true) do |f|%>
     <%= f.label :username %>

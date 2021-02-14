@@ -1,5 +1,5 @@
 <h1>Present Log In Information</h1><br />
-<%= button_to "Log in with Google", '/auth/google_oauth2' %>
+<%= button_to "Log in with Google", ':provider/callback' %>
 <br />
 
 <%= form_with(url: '/login') do |f|%>
