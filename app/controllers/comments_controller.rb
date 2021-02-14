@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
     def update
         @comment = current_user.comments.find(params[:id])
 
-        if @comment.update(comment_params) && @comment.user == current_user
+        if @comment.update(comment_params)
             redirect_to comment_path(@comment)
         else
             @error = @comment.errors.full_messages
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
         @comment = current_user.comments.find(params[:id])
         @plant = Plant.find(params[:comment][:plant_id]) 
 
-        if @comment.destroy && @comment.user == current_user
+        if @comment.destroy 
             flash[:success] = "Your comment was removed."
             redirect_to plants_path(@plant)
         else
