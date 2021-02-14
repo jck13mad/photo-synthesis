@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :redirect_if_not_logged_in 
+    before_action :redirect_if_not_logged_in, :find_comment, :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def new
         if params[:plant_id] && @plant = Plant.find_by_id([:plant_id])
@@ -36,7 +36,6 @@ class CommentsController < ApplicationController
         if @comment.update(comment_params) && @comment.user == current_user
             redirect_to comment_path(@comment)
         else
-            flash[:message] = "You can only edit your own comment"
             @error = @comment.errors.full_messages
             render :edit 
     end 
@@ -49,13 +48,22 @@ class CommentsController < ApplicationController
             flash[:success] = "Your comment was removed."
             redirect_to plants_path(@plant)
         else
-            flash[:message] = "You can only delete a comment you created."
             @error = @comment.errors.full_messages
             render :edit 
         end 
     end 
 
     private 
+
+        def find_comment
+            @comment = Comment.find(params[:id])
+        end
+
+        def redirect_if_not_owner 
+            if @comment.user != current_user
+                redirect_to user_path(current_user), alert: "You are not permitted to edit this comment."
+            end
+        end
 
         def comment_params
             params.require(:content).permit(:content, :plant_id, :user_id)
