@@ -1,0 +1,12 @@
+<h1><%= @plant.plant_and_type %></h1><br />
+<br />
+<%= @plant.img, style: {width:300px, length:300px} %>
+<br />
+<br />
+<p><%= @plant.description %></p>
+<br />
+<br />
+<%= link_to 'Edit Plant', edit_plant_path(@plant) %>
+<br />
+<%= render @plant %>
+
