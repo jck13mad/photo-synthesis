@@ -15,7 +15,7 @@ class PlantsController < ApplicationController
             @plant = @type.plants.build 
         else
             @plant = Plant.new 
-            @plant.build_brand
+            @plant.build_type
         end
     end
 
