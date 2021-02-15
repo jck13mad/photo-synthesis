@@ -22,14 +22,14 @@ class SessionsController < ApplicationController
         redirect_to '/login'
     end
 
-    def omniauth  #log users in with omniauth
+    def omniauth 
         user = User.create_from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
-            redirect_to plants_path
+            redirect_to new_plant_path
         else
             flash[:message] = user.errors.full_messages.join(", ")
-            redirect_to user_path(user)
+            redirect_to shoes_path
         end
     end
 
