@@ -11,7 +11,7 @@
     </div>
 <% end %>
 
-<%= form_for(@type)  do |f| %>
+<%= form_for(@type) do |f| %>
     <%= render partial: 'fields', locals: {f: f} %>
     <br />
     <%= f.submit %>

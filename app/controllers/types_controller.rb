@@ -15,7 +15,6 @@ class TypesController < ApplicationController
 
     def show
         @type = Type.find(params[:id])
-        @plants = Plant.all.where(Plant.type_id == @type.id)
     end
 
     def index

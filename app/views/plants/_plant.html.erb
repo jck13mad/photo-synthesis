@@ -1,4 +1,4 @@
 
     <img src="<%= @plant.img %>" alt="<%= @plant.name %>">
-    <b><%= link_to '<%= @plant.name %>', plant_path(@plant) %></b>
+    <%= link_to(plant.name, plant_path(@plant)) %>
     <%= @plant.description %>

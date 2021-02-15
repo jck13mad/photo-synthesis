@@ -10,6 +10,10 @@ class PlantsController < ApplicationController
         end
     end
 
+    def show
+        @plant = Plant.find(params[:id])
+    end
+
     def new
         if params[:type_id] && @type = Type.find_by_id(params[:type_id])
             @plant = @type.plants.build 
