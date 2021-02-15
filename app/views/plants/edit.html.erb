@@ -2,7 +2,7 @@
 
 <% if @plant.errors.any? %>
     <div id="error_explanation">
-        <h3><%= pluralize(@plant.errors.count, "error") reasons why this plant can not be saved: </h3>
+        <h3><%= pluralize(@plant.errors.count, "error") %> reasons why this plant can not be saved: </h3>
 
         <ul>
             <% @plant.errors.full_messages.each do |err| %>
@@ -25,3 +25,5 @@
     <%= f.submit %>
 
 <% end %>
+
+<%= button_to 'Delete Plant', plant_path(@plant), method: 'delete' %>

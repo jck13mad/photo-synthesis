@@ -1,14 +1,6 @@
 <h1><%= @plant.name %></h1><br />
 <br />
-<div class: "plant_image">
-    <%= @plant.img %>
-</div>
-<br />
-<br />
-<p><%= @plant.description %></p>
-<br />
-<br />
-<%= link_to 'Edit Plant', edit_plant_path(@plant) %>
-<br />
 <%= render @plant %>
+<%= link_to 'Edit Plant', edit_plant_path(@plant) %>
+
 

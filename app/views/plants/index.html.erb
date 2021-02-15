@@ -1,6 +1,6 @@
 <div>
     <h4>Search for a plant name: </h4>
-    <%= form_tag(plant_path, method: 'get') do %>
+    <%= form_tag(plants_path, method: 'get') do %>
         <%= text_field_tag(:q) %>
         <%= submit_tag("search") %>
     <% end %>
@@ -8,7 +8,7 @@
 
 <% @plants.order_by_name.each do |plant| %>
     <li>
-        <img src="<%= plant.img %> alt="<%= plant.name %> link_to plant, plant_path(plant) %>
+        <img src="<%= plant.img %> alt="plant.name" link_to plant, plant_path(plant) %>
         <%= link_to plant.name, plant_path(plant) %>
     </li>
 <% end %>
