@@ -68,12 +68,9 @@ class PlantsController < ApplicationController
         end 
 
         def redirect_if_not_owner
-            if @plant.user != current_user
-                if @user_id == nil 
-                    redirect_to login_path, alert: "Sign in to edit a plant."
-                else 
-                    redirect_to user_path(current_user), alert: "You are not permitted to edit this plant."
-                end
+            if @plant.user != current_user 
+                redirect_to user_path(current_user), alert: "You are not permitted to edit this plant."
             end
         end 
+
 end
