@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
             redirect_to plants_path
         else
             flash[:message] = user.errors.full_messages.join(", ")
-            redirect_to plants_path 
+            redirect_to user_path(user)
         end
     end
 
