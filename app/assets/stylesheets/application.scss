@@ -44,7 +44,7 @@ a {
 
 
 a:hover {
-    color: #1b410b;
+    color: #6dc248;
 }
 
 .jumbotron {
@@ -55,4 +55,9 @@ a:hover {
             color: white;
             font-size: 18px;
     }
+
+    .logo {
+        height: 10em;
+        max-width: 80%;
+    }   
 }
