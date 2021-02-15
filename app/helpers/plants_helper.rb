@@ -4,5 +4,6 @@ module PlantsHelper
             t.hidden_field :type_id
         else
             render partial: 'type_select', locals: {f: t}
+        end
     end 
 end
