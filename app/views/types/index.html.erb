@@ -2,7 +2,7 @@
 <br />
 <ul>
     <% @types.each do |type| %>
-        <li><%= link_to type.name, type_path(type) %></li>
+        <li><%= link_to type.name, type_plants_path(type) %></li>
     <% end %>
 </ul>
 <br />

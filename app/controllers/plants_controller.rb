@@ -8,6 +8,12 @@ class PlantsController < ApplicationController
         else
             @plants = Plant.order_by_name
         end
+
+        if params[:q]
+            @plants = Plant.search(params[:q])
+        else
+            @plants = Plant.alpha.order_by_name.all
+        end
     end
 
     def show
@@ -63,7 +69,11 @@ class PlantsController < ApplicationController
 
         def redirect_if_not_owner
             if @plant.user != current_user
-                redirect_to user_path(current_user), alert: "You are not permitted to edit this plant."
+                if @user_id == nil 
+                    redirect_to login_path, alert: "Sign in to edit a plant."
+                else 
+                    redirect_to user_path(current_user), alert: "You are not permitted to edit this plant."
+                end
             end
         end 
 end

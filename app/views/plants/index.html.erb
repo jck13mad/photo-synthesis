@@ -5,10 +5,14 @@
         <%= submit_tag("search") %>
     <% end %>
 </div>
+<br />
+<br />
 
-<% @plants.order_by_name.each do |plant| %>
-    <li>
-        <img class="plant_image_index" src="<%= plant.img %>" alt="<%= plant.name %>"><br />
-        <%= link_to plant.name, plant_path(plant) %><br /><br />
-    </li>
+<% if @plants != nil %>
+    <% @plants.order_by_name.each do |plant| %>
+        <li>
+            <img class="plant_image_index" src="<%= plant.img %>" alt="<%= plant.name %>"><br />
+            <%= link_to plant.name, plant_path(plant) %><br /><br />
+        </li>
+    <% end %>
 <% end %>

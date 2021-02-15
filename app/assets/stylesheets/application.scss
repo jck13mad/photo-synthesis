@@ -14,7 +14,6 @@
  *= require_self
  */
  @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
- @import url('../images/calum-lewis-vA1L1jRTM70-unsplash.jpg');
 
  body {
     background: white;
@@ -50,6 +49,7 @@ a:hover {
 .jumbotron {
     background: #1b410b;
     color: white;
+    box-shadow: 3px 3px;
     text-align: center;
     p {
             color: white;

@@ -1,8 +1,10 @@
-
+<div>
     <img class="plant_image" src="<%= plant.img %>" alt="<%= plant.name %>"><br /><br />
     <%= plant.description %>
-    <br />
+    <br /><br />
+    <%= link_to(plant.type.name, type_plants_path(plant.type)) %>
+    <br /><br />
     <%= link_to 'Edit Plant', edit_plant_path(plant) %>
     <br />
     <br />
-    
+</div>
