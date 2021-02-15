@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
     before_action :find_plant, :redirect_if_not_owner, only: [:edit, :update, :destroy]
-    layout 'plant'
+    layout 'application'
 
     def index
         if params[:type_id] && @type = Type.find_by_id(params[:type_id])

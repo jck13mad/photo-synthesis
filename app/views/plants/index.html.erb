@@ -8,7 +8,7 @@
 
 <% @plants.order_by_name.each do |plant| %>
     <li>
-        <img src="<%= plant.img %> alt="plant.name" link_to plant, plant_path(plant) %>
-        <%= link_to plant.name, plant_path(plant) %>
+        <img class="plant_image_index" src="<%= plant.img %>" alt="<%= plant.name %>"><br />
+        <%= link_to plant.name, plant_path(plant) %><br /><br />
     </li>
 <% end %>
