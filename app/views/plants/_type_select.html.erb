@@ -1,6 +1,6 @@
 <%= f.label :type, "Type of Plant: " %>
 <%= f.collection_select :type_id, Type.all, :id, :name, prompt: true %>
-<br />
+<p>OR</p>
 
 <%= f.fields_for :type do |t| %>
     <%= render partial: 'types/fields', locals: {f: t} %>

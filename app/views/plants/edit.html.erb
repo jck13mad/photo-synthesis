@@ -15,10 +15,13 @@
 <%= form_with(model: @plant, class: 'edit_plant', local: true) do |f| %>
     <%= f.label :name, "Name of Plant: " %>
     <%= f.text_field :name, placeholder: @plant.name %><br />
+    <br />
     <%= f.label :type, "Plant Type: " %>
     <%= f.text_field :type, placeholder: @plant.type.name %><br />
+    <br />
     <%= f.label :description, "Plant Description: " %>
     <%= f.text_area :description, placeholder: @plant.description %><br />
+    <br />
     <%= f.label :img, "URL of Plant Image: " %>
     <%= f.text_field :img, placeholder: @plant.img %><br />
     <br />
