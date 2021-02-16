@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-    before_action :find_plant, :redirect_if_not_owner, only: [:edit, :update, :destroy], :redirect_if_not_logged_in
+    before_action :find_plant, :redirect_if_not_logged_in, :redirect_if_not_owner, only: [:edit, :update, :destroy]
     layout 'application'
 
     def index
@@ -74,7 +74,7 @@ class PlantsController < ApplicationController
         end 
 
         def redirect_if_not_logged_in
-            if @user.id == nil 
+            if session[:user_id] == nil
                 redirect_to login_path
             end
         end

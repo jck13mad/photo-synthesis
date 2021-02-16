@@ -83,7 +83,7 @@ class CommentsController < ApplicationController
         end
 
         def redirect_if_not_logged_in
-            if @user.id == nil 
+            if session[:user_id] == nil
                 redirect_to login_path
             end
         end
