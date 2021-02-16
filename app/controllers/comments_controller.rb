@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :redirect_if_not_logged_in, :find_comment, :redirect_if_not_owner, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in, :find_plant, :find_comment, :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def index 
         if params[:plant_id] && @plant = Plant.find_by_id(params[:plant_id])
