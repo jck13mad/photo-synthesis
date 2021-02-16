@@ -1,5 +1,5 @@
 <h2>Post a comment on <%= @plant.user.username %>'s <%= @plant.name %></h1>
-
+<br />
 <%= form_for(@comment) do |f| %>
     <%= f.hidden_field :plant_id, :value => @plant.id %>
 

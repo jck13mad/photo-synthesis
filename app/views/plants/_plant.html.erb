@@ -7,4 +7,16 @@
     <%= link_to 'Edit Plant', edit_plant_path(plant) %>
     <br />
     <br />
+    <%= link_to 'Add Comment', new_comment_path %>
+    <br />
+    <br />
+    <h4><strong>Comments</strong></h4>
+    <% @plant.comments.each do |comment| %>
+        <ul>
+            <li><strong><%= comment.user.username %></strong>: "<%= comment.content %>"</li><br />
+            <% if comment.user == current_user %>
+                <%= link_to "Edit Comment", edit_comment_path(comment) %>
+            <% end %>
+        </ul>
+    <% end %>
 </div>
