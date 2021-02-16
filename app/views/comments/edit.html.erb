@@ -1,7 +1,7 @@
 <h2>Edit Comment Here</h2>
 
 <%= form_for(@comment) do |f| %>
-    <%= f.text_field :content, placeholder: #{@comment.content} %>
+    <%= f.text_field :content, placeholder: @comment.content %>
     <br />
     <br />
     <%= f.submit "Submit" %>
@@ -9,4 +9,4 @@
 
 <p class="button"><%= button_to 'Delete Comment', comment_path(@comment), method: 'delete' %></p>
 
-<p><%= button_to 'Return to plant.', plant_path(@comment.plant), method: 'get' %></p>
+<p><%= button_to 'Return to plant', plant_path(@comment.plant), method: 'get' %></p>

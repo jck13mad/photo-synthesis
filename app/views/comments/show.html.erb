@@ -6,7 +6,7 @@
 
 <% if @comment.user == current_user %>
   <%= link_to "Edit Comment", edit_comment_path(@comment) %> | 
-  <%= link_to "Delete Comment", delete_comment_path(@comment) %>
+  <%= link_to 'Delete Comment', comment_path(@comment), method: 'delete' %>
 <% end %>
 <br />
 <br />
