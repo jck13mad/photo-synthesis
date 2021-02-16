@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in, :find_comment, :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def index 
-        if params[:plant_id] && @plant = Plant.find_by_id([:plant_id])
+        if params[:plant_id] && @plant = Plant.find_by_id(params[:plant_id])
             @comments = @plant.comments 
         elsif current_user
             @comments = current_user.comments.all 
@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
     end 
 
     def new
-        if params[:plant_id] && @plant = Plant.find_by_id([:plant_id])
-            @comment = @plant.comments.new 
+        if params[:plant_id] && @plant = Plant.find_by_id(params[:plant_id])
+            @comment = @plant.comments.new
         else
             @error = "Plant does not exist" if params[:plant_id]
             @comment = Comment.new 
@@ -70,6 +70,10 @@ class CommentsController < ApplicationController
 
         def find_comment
             @comment = Comment.find(params[:id])
+        end
+
+        def find_plant
+            @plant = Plant.find_by_id(params[:id])
         end
 
         def redirect_if_not_owner 
