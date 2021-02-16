@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-    before_action :find_plant, :redirect_if_not_owner, only: [:edit, :update, :destroy]
+    before_action :find_plant, :redirect_if_not_owner, only: [:edit, :update, :destroy], :redirect_if_not_logged_in
     layout 'application'
 
     def index
@@ -72,5 +72,11 @@ class PlantsController < ApplicationController
                 redirect_to user_path(current_user), alert: "You are not permitted to edit this plant."
             end
         end 
+
+        def redirect_if_not_logged_in
+            if @user.id == nil 
+                redirect_to login_path
+            end
+        end
 
 end

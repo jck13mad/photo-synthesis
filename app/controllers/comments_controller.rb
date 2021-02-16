@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in, :find_plant, :find_comment, :redirect_if_not_owner, only: [:edit, :update, :destroy]
 
     def index 
-        if params[:plant_id] && @plant = Plant.find_by_id(params[:plant_id])
+        if params[:plant_id] 
             @comments = @plant.comments 
         elsif current_user
             @comments = current_user.comments.all 
@@ -73,12 +73,18 @@ class CommentsController < ApplicationController
         end
 
         def find_plant
-            @plant = Plant.find_by_id(params[:id])
+            @plant = Plant.find_by_id(params[:plant_id])
         end
 
         def redirect_if_not_owner 
             if @comment.user != current_user
                 redirect_to user_path(current_user), alert: "You are not permitted to edit this comment."
+            end
+        end
+
+        def redirect_if_not_logged_in
+            if @user.id == nil 
+                redirect_to login_path
             end
         end
 
