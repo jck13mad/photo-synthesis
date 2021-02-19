@@ -8,10 +8,6 @@ class Plant < ApplicationRecord
     has_many :users_commented, through: :comments, source: :user
     belongs_to :type
 
-    def self.search(q)
-        Plant.where("name LIKE ?", "%#{q}%").alpha
-    end
-
     def type_attributes=(attr) 
         if !attr[:name].blank?
             self.type = Type.find_or_create_by(name: attr[:name])

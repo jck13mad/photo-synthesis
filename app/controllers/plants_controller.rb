@@ -6,12 +6,6 @@ class PlantsController < ApplicationController
         if params[:type_id] && @type = Type.find_by_id(params[:type_id])
             @plants = @type.plants.order_by_name
         else
-            @plants = Plant.order_by_name
-        end
-
-        if params[:q]
-            @plants = Plant.search(params[:q])
-        else
             @plants = Plant.alpha.order_by_name.all
         end
     end

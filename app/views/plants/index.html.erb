@@ -1,11 +1,4 @@
-<div>
-    <h4>Search for a plant name: </h4>
-    <%= form_tag(plants_path, method: 'get') do %>
-        <%= text_field_tag(:q) %>
-        <%= submit_tag("search") %>
-    <% end %>
-</div>
-<br />
+
 <br />
 
 <% if @plants != nil %>
